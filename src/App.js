@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/global.scss";
+import Routes from "./Routes";
+import { NavLink, useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="wrapper">
+      <div className="navbar">
+        <NavLink
+          to="/"
+          className={`${location.pathname === "/" && "navbar-active"}`}
         >
-          Learn React
-        </a>
-      </header>
+          Is A Triangle?
+        </NavLink>
+        <NavLink
+          to="/hypotenuse"
+          className={`${
+            location.pathname === "/hypotenuse" && "navbar-active"
+          }`}
+        >
+          Calculate Hypotenuse.
+        </NavLink>
+        <NavLink
+          to="/area"
+          className={`${location.pathname === "/area" && "navbar-active"}`}
+        >
+          Calculate Area.
+        </NavLink>
+        <NavLink
+          to="/triangle-quiz"
+          className={`${
+            location.pathname === "/triangle-quiz" && "navbar-active"
+          }`}
+        >
+          Triangle Quiz
+        </NavLink>
+      </div>
+      <Routes />
     </div>
   );
 }
